@@ -45,7 +45,9 @@ const connectDB = async () => {
 };
 
 connectDB();
-
+app.use("/",()=>{
+     res.json({message:"Api is running"});
+})
 app.use('/auth', authRoutes);
 app.use('/budget', budgetRoutes);
 
