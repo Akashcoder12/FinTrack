@@ -10,25 +10,27 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-
 const allowedOrigins = [
-  'https://fin-track-gray.vercel.app',
-  'http://localhost:5173',
+  "http://localhost:5173",
+  "https://fin-track-gray.vercel.app"
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    console.log("Request origin:", origin);
-    if (!origin) return callback(null, true);
+    if (!origin) return callback(null, true); // allow Postman / server calls
     if (allowedOrigins.includes(origin)) {
-      callback(null, true);
+      return callback(null, true);
     } else {
-      callback(new Error(`CORS blocked for origin: ${origin}`));
+      return callback(new Error("Not allowed by CORS"));
     }
   },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 }));
 
+// ✅ explicitly handle preflight requests
+app.options("*", cors());
 
 app.use(bodyParser.json());
 
