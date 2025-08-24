@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 
-const allowedOrigins = ['http://localhost:5173']; // your frontend URL (Vite default)
+const allowedOrigins = ['http://localhost:5173','https://fin-track-gray.vercel.app/']; // your frontend URL (Vite default)
 app.use(cors({
   origin: allowedOrigins,
   credentials: true, // if you need cookies/auth

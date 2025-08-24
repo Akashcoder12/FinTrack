@@ -19,7 +19,7 @@ function Expense() {
 
   async function fetchExpenses() {
     try {
-      const response = await fetch(`http://localhost:4000/budget/${id}/expenses`, {
+      const response = await fetch(`https://fintrack-1-pdpg.onrender.com/budget/${id}/expenses`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -41,7 +41,7 @@ function Expense() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:4000/budget/${id}/expenses`, {
+      const response = await fetch(`https://fintrack-1-pdpg.onrender.com/budget/${id}/expenses`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ function Expense() {
   const handleDelete = async (expenseId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/budget/${id}/expenses/${expenseId}`,
+        `https://fintrack-1-pdpg.onrender.com/budget/${id}/expenses/${expenseId}`,
         {
           method: "DELETE",
           headers: {
