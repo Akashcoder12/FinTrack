@@ -10,7 +10,12 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors({origin:'https://fin-track-gray.vercel.app/'}))
+app.use(cors({origin:['https://fin-track-gray.vercel.app/'],
+    methods:["GET","POST","PUT","DELETE"],
+    credentials:true
+}));
+
+app.options("*",cors());
 
 app.use(bodyParser.json());
 
@@ -24,9 +29,6 @@ const connectDB = async () => {
 };
 
 connectDB();
-// app.use("/",(req,res)=>{
-//      res.json({message:"Api is running"});
-// })
 app.use('/auth', authRoutes);
 app.use('/budget', budgetRoutes);
 
