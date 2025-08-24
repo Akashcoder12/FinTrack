@@ -11,11 +11,23 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 
-const allowedOrigins = ['http://localhost:5173','https://fin-track-gray.vercel.app/']; // your frontend URL (Vite default)
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://fin-track-gray.vercel.app'
+];
+
 app.use(cors({
-  origin: allowedOrigins,
-  credentials: true, // if you need cookies/auth
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // allow requests like Postman or server-side
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
 }));
+
 
 app.use(bodyParser.json());
 
