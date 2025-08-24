@@ -12,17 +12,18 @@ const PORT = process.env.PORT || 4000;
 
 
 const allowedOrigins = [
+  'https://fin-track-gray.vercel.app',
   'http://localhost:5173',
-  'https://fin-track-gray.vercel.app'
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // allow requests like Postman or server-side
+    console.log("Request origin:", origin);
+    if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error(`CORS blocked for origin: ${origin}`));
     }
   },
   credentials: true,
