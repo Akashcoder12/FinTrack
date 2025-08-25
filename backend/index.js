@@ -13,7 +13,12 @@ const PORT = process.env.PORT || 4000;
 
  const _dirname=path.resolve();
 
-app.use(cors({origin: "http://localhost:5173"}));
+const corsOptions={
+   origin:"http://localhost:5173",
+   Credential:true
+}
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
