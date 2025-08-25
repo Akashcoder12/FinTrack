@@ -58,7 +58,7 @@ export default function About() {
       {/* Footer Note */}
       <div className="max-w-4xl mx-auto text-center mt-12 mb-6 text-gray-600">
         <p>
-          Designed and developed by <span className="font-semibold">Your Name</span>. This project demonstrates a complete full-stack MERN application with authentication, CRUD operations, and responsive UI.
+          Designed and developed by <span className="font-semibold">Akash Gupta</span>. This project demonstrates a complete full-stack MERN application with authentication, CRUD operations, and responsive UI.
         </p>
       </div>
     </div>

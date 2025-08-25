@@ -18,7 +18,7 @@ function Expense() {
 
   async function fetchExpenses() {
     try {
-      const response = await fetch(`https://fintrack-1-d2g9.onrender.com/budget/${id}/expenses`, {
+      const response = await fetch(`https://fintrack-2-59zk.onrender.com/budget/${id}/expenses`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -40,7 +40,7 @@ function Expense() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://fintrack-1-d2g9.onrender.com/budget/${id}/expenses`, {
+      const response = await fetch(`https://fintrack-2-59zk.onrender.com/budget/${id}/expenses`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

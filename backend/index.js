@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 4000;
  const _dirname=path.resolve();
 
 const corsOptions={
-   origin:"https://fintrack-1-d2g9.onrender.com",
+   origin:"https://fintrack-2-59zk.onrender.com",
    Credential:true
 }
 

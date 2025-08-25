@@ -11,7 +11,7 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://fintrack-1-d2g9.onrender.com/auth/signup', {
+      const response = await fetch('https://fintrack-2-59zk.onrender.com/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })
