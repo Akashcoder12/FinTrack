@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 4000;
  const _dirname=path.resolve();
 
 const corsOptions={
-   origin:"http://localhost:5173",
+   origin:"https://fintrack-1-d2g9.onrender.com",
    Credential:true
 }
 

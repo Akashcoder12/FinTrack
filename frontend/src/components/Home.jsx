@@ -13,7 +13,7 @@ function Home() {
   // Fetch budgets
   async function fetchBudgets() {
     try {
-      const response = await fetch(`http://localhost:4000/budget/`, {
+      const response = await fetch(`https://fintrack-1-d2g9.onrender.com:4000/budget/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -49,7 +49,7 @@ function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/budget/create', {
+      const response = await fetch('https://fintrack-1-d2g9.onrender.com/budget/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

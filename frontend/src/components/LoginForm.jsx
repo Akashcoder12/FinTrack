@@ -10,7 +10,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/auth/login', {
+      const response = await fetch('https://fintrack-1-d2g9.onrender.com/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
