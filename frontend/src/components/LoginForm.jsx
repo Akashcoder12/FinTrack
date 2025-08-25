@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const LoginForm = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: username, password })
+        body: JSON.stringify({email,password })
       });
 
       const data = await response.json();
@@ -43,8 +43,8 @@ const LoginForm = () => {
         <input
           type="text"
           placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
