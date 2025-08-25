@@ -4,18 +4,16 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const budgetRoutes = require('./routes/budget');
-const cors = require('cors')
+const path=require("path");
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors({origin:['https://fin-track-gray.vercel.app/'],
-    methods:["GET","POST","PUT","DELETE"],
-    credentials:true
-}));
+ const _dirname=path.resolve();
 
-app.options("*",cors());
+app.use(cors({origin: "http://localhost:5173"}));
 
 app.use(bodyParser.json());
 
@@ -31,6 +29,14 @@ const connectDB = async () => {
 connectDB();
 app.use('/auth', authRoutes);
 app.use('/budget', budgetRoutes);
+
+
+app.use(express.static(path.join(_dirname,"/frontend/dist")));
+
+app.get("/*splat",(req,res)=>{
+      res.sendFile(path.resolve(_dirname,"frontend","dist","index.html"));
+});
+
 
 app.listen(PORT, () => {
     console.log(process.env.MONGO_URI);

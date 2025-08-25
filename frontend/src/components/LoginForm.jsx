@@ -10,7 +10,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://fintrack-1-pdpg.onrender.com/auth/login', {
+      const response = await fetch('http://localhost:4000/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -27,8 +27,8 @@ const LoginForm = () => {
         alert(data.message || "Login failed");
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Error:', error);
+      console.error('Error:', error.message);
+      alert('Error: ' + error.message);
     }
   };
 

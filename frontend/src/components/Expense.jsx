@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { MdDeleteForever } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Expense() {
@@ -19,7 +18,7 @@ function Expense() {
 
   async function fetchExpenses() {
     try {
-      const response = await fetch(`https://fintrack-1-pdpg.onrender.com/budget/${id}/expenses`, {
+      const response = await fetch(`http://localhost:4000/budget/${id}/expenses`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -41,7 +40,7 @@ function Expense() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://fintrack-1-pdpg.onrender.com/budget/${id}/expenses`, {
+      const response = await fetch(`http://localhost:4000/budget/${id}/expenses`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -61,24 +60,6 @@ function Expense() {
     }
   };
 
-  const handleDelete = async (expenseId) => {
-    try {
-      const response = await fetch(
-        `https://fintrack-1-pdpg.onrender.com/budget/${id}/expenses/${expenseId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      if (!response.ok) throw new Error("Failed to delete expense");
-      setExpAdd((prev) => !prev);
-    } catch (err) {
-      console.error("Error deleting expense:", err);
-      alert("Error deleting expense");
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -128,18 +109,13 @@ function Expense() {
             List of Expenses
           </h3>
           <ul className="space-y-3">
-            {expenses?.expenses?.map((item) => (
+            {expenses?.budgets?.expenses?.map((item) => (
               <li
                 key={item._id}
                 className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-lg shadow-sm"
               >
                 <span>{item.name}</span>
                 <span className="font-semibold">₹{item.amount}</span>
-                <MdDeleteForever
-                  className="text-red-500 cursor-pointer hover:text-red-700"
-                  size={24}
-                  onClick={() => handleDelete(item._id)}
-                />
               </li>
             ))}
           </ul>

@@ -11,7 +11,7 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://fintrack-1-pdpg.onrender.com/auth/signup', {
+      const response = await fetch('http://localhost:4000/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })
@@ -26,8 +26,8 @@ const SignupForm = () => {
         alert(data.message || 'Error creating account');
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Error:', error);
+      console.error('Error:', error.message);
+       alert('Error: ' + error.message);
     }
   };
 

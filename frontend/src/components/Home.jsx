@@ -13,7 +13,7 @@ function Home() {
   // Fetch budgets
   async function fetchBudgets() {
     try {
-      const response = await fetch('https://fintrack-1-pdpg.onrender.com/budget', {
+      const response = await fetch(`http://localhost:4000/budget/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -25,7 +25,7 @@ function Home() {
 
       const data = await response.json();
       console.log("Budgets fetched:", data);
-      setBudgets(data.data || []);
+      setBudgets(data || []);
     } catch (error) {
       console.error('Error fetching budgets:', error);
     }
@@ -49,7 +49,7 @@ function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://fintrack-1-pdpg.onrender.com/budget/create', {
+      const response = await fetch('http://localhost:4000/budget/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
